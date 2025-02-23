@@ -7,7 +7,7 @@ test.describe("Local simple form tests", async () => {
         await page.goto(filePath);
     })
 
-    test('Form opens', {tag: ["@checkBtn", "@regression"]}, async ({ page }) => {
+    test('Form opens', async ({ page }) => {
         //locators
         const emailField = page.getByTestId("email");
         const usernameField = page.getByTestId("username");
