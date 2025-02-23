@@ -1,7 +1,13 @@
 import { test, expect } from '@playwright/test';
 
 test.describe("Local simple form tests", async () => {
-    test.only('Form opens', async ({ page }) => {
+    test.beforeEach(async ({ page }) => {
+        const path = require('path');
+        const filePath = `file://${path.resolve('src/simpleForm.html')}`;
+        await page.goto(filePath);
+    })
+
+    test('Form opens', {tag: ["@checkBtn", "@regression"]}, async ({ page }) => {
         //locators
         const emailField = page.getByTestId("email");
         const usernameField = page.getByTestId("username");
@@ -9,7 +15,6 @@ test.describe("Local simple form tests", async () => {
         const popupMessage = page.locator("#popup-message");
 
         //actions
-        await page.goto('http://localhost:3000');
         await expect(emailField).toBeVisible();
         await expect(usernameField).toBeVisible();
         await expect(submitButton).toBeVisible();
