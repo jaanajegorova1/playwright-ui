@@ -21,5 +21,5 @@ npx playwright test TLFormTests.spec.ts --project=firefox
 npx playwright test TLFormTests.spec.ts --project=webkit
 
 #How to run one test case on one browser in debug mode:
-test.only... + 
+test.only... +
 npx playwright test TLFormTests.spec.ts --debug --project=chromium
